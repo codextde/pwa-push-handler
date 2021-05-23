@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { Dialog } from '@capacitor/dialog';
 import {
   PushNotificationSchema,
   PushNotifications,
   Token,
   ActionPerformed,
 } from '@capacitor/push-notifications';
+import { Toast } from '@capacitor/toast';
 
 @Component({
   selector: 'app-home',
@@ -12,7 +14,21 @@ import {
   styleUrls: ['./home.page.scss'],
 })
 export class HomePage implements OnInit {
+  services = [
+    { name: 'Smartbell PWA', website: 'https://codext.de' },
+    { name: 'Smartbell PWA', website: 'https://codext.de' },
+  ];
   constructor() {}
+
+  async addService() {
+    const { value, cancelled } = await Dialog.prompt({
+      title: 'Service',
+      message: `Please add the ID from the Website:`,
+    });
+
+    console.log('Name:', value);
+    console.log('Cancelled:', cancelled);
+  }
 
   ngOnInit() {
     console.log('Initializing HomePage');
@@ -30,20 +46,29 @@ export class HomePage implements OnInit {
     });
 
     // On success, we should be able to receive notifications
-    PushNotifications.addListener('registration', (token: Token) => {
-      alert('Push registration success, token: ' + token.value);
+    PushNotifications.addListener('registration', async (token: Token) => {
+      // alert('Push registration success, token: ' + token.value);
+      await Toast.show({
+        text: 'Push registration success',
+      });
     });
 
     // Some issue with our setup and push will not work
-    PushNotifications.addListener('registrationError', (error: any) => {
-      alert('Error on registration: ' + JSON.stringify(error));
+    PushNotifications.addListener('registrationError', async (error: any) => {
+      // alert('Error on registration: ' + JSON.stringify(error));
+      await Toast.show({
+        text: 'Error on Push registration',
+      });
     });
 
     // Show us the notification payload if the app is open on our device
     PushNotifications.addListener(
       'pushNotificationReceived',
-      (notification: PushNotificationSchema) => {
-        alert('Push received: ' + JSON.stringify(notification));
+      async (notification: PushNotificationSchema) => {
+        // alert('Push received: ' + JSON.stringify(notification));
+        await Toast.show({
+          text: 'Push received: ' + JSON.stringify(notification),
+        });
       }
     );
 
@@ -51,7 +76,8 @@ export class HomePage implements OnInit {
     PushNotifications.addListener(
       'pushNotificationActionPerformed',
       (notification: ActionPerformed) => {
-        alert('Push action performed: ' + JSON.stringify(notification));
+        // alert('Push action performed: ' + JSON.stringify(notification));
+        // Push Action
       }
     );
   }
