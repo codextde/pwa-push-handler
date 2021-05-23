@@ -1,0 +1,6 @@
+{
+	"appId": "de.codext.pwa-push-handler",
+	"appName": "PWA Push Handler",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}
