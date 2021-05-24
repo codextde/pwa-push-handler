@@ -1,3 +1,4 @@
+import { PwaListPageModule } from './../../pages/pwa-list/pwa-list.module';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomePageModule } from 'src/pages/home/home.module';
@@ -12,6 +13,10 @@ const routes: Routes = [
       {
         path: 'home',
         loadChildren: () => HomePageModule,
+      },
+      {
+        path: 'pwa',
+        loadChildren: () => PwaListPageModule,
       },
       {
         path: 'settings',

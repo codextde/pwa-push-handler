@@ -1,0 +1,50 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title> PWA List </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">PWA List</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <div class="p-5 pb-0">
+    <div
+      class="
+        text-sm text-left text-blue-600
+        bg-blue-200
+        border border-blue-400
+        flex
+        items-center
+        p-4
+        rounded-sm
+      "
+      role="alert"
+    >
+      Find PWAs from all over the global. More incoming 😇
+    </div>
+  </div>
+
+  <ion-card *ngFor="let pwa of pwas">
+    <div
+      class="bg-cover bg-no-repeat bg-center w-full h-52"
+      [style.backgroundImage]="'url('+pwa.image+')'"
+    ></div>
+    <ion-card-header>
+      <ion-card-subtitle>Name</ion-card-subtitle>
+      <ion-card-title>{{pwa.name}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content> {{pwa.description}} </ion-card-content>
+    <div class="flex justify-end px-5 pb-5">
+      <ion-button
+        (click)="openPWA(pwa.url)"
+        fill="outline"
+        slot="end"
+        size="small"
+        >Go to PWA</ion-button
+      >
+    </div>
+  </ion-card>
+</ion-content>

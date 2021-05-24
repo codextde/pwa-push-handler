@@ -43,11 +43,11 @@ export class HomePage implements OnInit {
     await Browser.open({ url: item.website });
   }
 
-  async deleteItem(item) {}
+  async deleteItem(item) {
+    this.services = this.services.filter((_item) => _item !== item);
+  }
 
   ngOnInit() {
-    console.log('Initializing HomePage');
-
     if (Capacitor.isNativePlatform()) {
       // Request permission to use push notifications
       // iOS will prompt user and return if they granted permission or not
