@@ -2,7 +2,7 @@
 # PWA Push Handler 🎉🙌
 ### iOS Push Notifications for PWAs and Web Apps
 
-**ToDo**
+## **ToDo**
 
  - [x] Create iOS App and send them to Apple for Check
  - [ ] Create more useless functions for the App (That Apple will approve the App)
@@ -13,13 +13,13 @@
 
 
 
-**Why?**
+## **Why?**
 It is 2021. Apple released iOS 14.5 (or maybe soon 15) and it is Still not possible to send Push Notifications to PWAs installed over Safari. This is really disappointing.
 
 This Project is called PWA Push Handler. The Idea is that you as developer can register your PWA at this Service and then add a Banner to your PWA that the User should download the Push Handler App to the iPhone and add the PWA (also with deep links if the app is already installed). 
 With a Post Command you can send Push to your PWA and the App will Receive the Push Notifications and on click will redirect to the PWA.
 
-**Status:**
+## **Status:**
 Apple declined the App now multiple times because of the following Reason:
 
 > Guideline 4.2 - Design - Minimum Functionality
