@@ -1,6 +1,7 @@
 
 # PWA Push Handler 🎉🙌
 ### iOS Push Notifications for PWAs and Web Apps
+### Searching for Contributors 
 
 ## **ToDo**
 
